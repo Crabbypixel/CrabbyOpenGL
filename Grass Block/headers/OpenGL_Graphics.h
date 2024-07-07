@@ -223,11 +223,12 @@ public:
 
 		// Set viewport and callback function when window gets resized 
 		glViewport(0, 0, m_width, m_height);
-		//glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
-
-		// Enable z-buffer
-		glEnable(GL_DEPTH_TEST);
-		glDepthFunc(GL_LESS);
+		
+		// Enable z-buffer and enable face-culling
+		glEnable(GL_DEPTH_TEST);        // Enable depth testing
+		glEnable(GL_CULL_FACE);         // Enable face culling
+		glCullFace(GL_BACK);            // Cull back faces
+		glFrontFace(GL_CCW);            // Define front faces as counter-clockwise
 
 		// Display GPU info
 		CheckGPU();
